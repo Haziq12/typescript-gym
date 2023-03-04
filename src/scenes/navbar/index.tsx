@@ -15,7 +15,7 @@ const Navbar = ({ selectedPage, setSelectedPage }: Props) => {
   const flexBetween = "flex items-center justify-between";
   const isAboveMediumScreens = useMediaQuery("(min-width: 1060px)");
   const [isMenuToggled, setIsMenuToggled] = useState<boolean>(false) 
-  
+
   return (
     <nav>
       <div className={`${flexBetween} fixed top-0 z-30 w-full py-6`}>
@@ -49,7 +49,7 @@ const Navbar = ({ selectedPage, setSelectedPage }: Props) => {
                 </div>
                 <div className={`${flexBetween} gap-8`}>
                   <p>Sign In</p>
-                  <button>Become a member</button>
+                  <ActionButton setSelectedPage={setSelectedPage}>Become a member</ActionButton> 
                 </div>
               </div>
             ) : (
