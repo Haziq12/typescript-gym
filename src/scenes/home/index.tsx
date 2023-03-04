@@ -1,13 +1,13 @@
 import useMediaQuery from "@/hooks/useMediaQuery";
-import React from "react";
 import ActionButton from "@/shared/ActionButton";
 import HomePageText from "@/assets/HomePageText.png";
-import HomePageGraphic from "@/assets/HomePageText.png";
-import SponsorRedBulle from "@/assets/HomePageText.png";
-import SponsorForbes from "@/assets/HomePageText.png";
-import SponsorFortune from "@/assets/HomePageText.png";
+import HomePageGraphic from "@/assets/HomePageGraphic.png";
+import SponsorRedBull from "@/assets/SponsorRedBull.png";
+import SponsorForbes from "@/assets/SponsorForbes.png";
+import SponsorFortune from "@/assets/SponsorFortune.png";
 import AnchorLink from "react-anchor-link-smooth-scroll";
 import { SelectedPage } from "@/shared/types";
+import { motion } from "framer-motion";
 
 type Props = {
   setSelectedPage: (vale: SelectedPage) => void;
@@ -19,13 +19,13 @@ const Home = ({ setSelectedPage }: Props) => {
   return (
     <section id="home" className="gap-16 bg-gray-20 py-10 md:h-full md:pb-0">
       {/* Image & Main header */}
-      <div>
+      <div  className="mx-auto w-5/6 items-center justify-center md:flex md:h-5/6">
         {/* Main header */}
-        <div>
+        <div  className="z-10 mt-32 md:basis-3/5">
           {/* Headings */}
-          <div>
-            <div>
-              <div>
+          <motion.div  className="md:-mt-20">
+            <div className="relative">
+              <div className="before:absolute before:-top-20 before:-left-20 before:z-[-1] md:before:content-evolvetext">
                 <img src={HomePageText} alt="home-page-text" />
               </div>
             </div>
@@ -34,9 +34,9 @@ const Home = ({ setSelectedPage }: Props) => {
               Studios to get the Body Shapes That you Dream of.. Get Your Dream
               Body Now.
             </p>
-          </div>
+          </motion.div>
           {/* actions */}
-          <div>
+          <div  className="mt-8 flex items-center gap-8">
             <ActionButton setSelectedPage={setSelectedPage}>
               Join Now!
             </ActionButton>
@@ -48,10 +48,22 @@ const Home = ({ setSelectedPage }: Props) => {
           </div>
         </div>
         {/* Image div */}
-        <div>
+        <div  className="flex basis-3/5 justify-center md:z-10 md:ml-40 md:mt-16 md:justify-items-end">
         <img alt="home-pageGraphic" src={HomePageGraphic} />
         </div>
       </div>
+      {/* Sponsors */}
+      {isAboveMediumScreens && (
+        <div className="h-[150px] w-full bg-primary-100 py-10">
+          <div className="mx-auto w-5/6">
+            <div className="flex w-3/5 items-center justify-between gap-8">
+              <img alt="redbull-sponsor" src={SponsorRedBull} />
+              <img alt="forbes-sponsor" src={SponsorForbes} />
+              <img alt="fortune-sponsor" src={SponsorFortune} />
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 };
